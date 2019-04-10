@@ -1,0 +1,46 @@
+{
+    "name": "Braun",
+    "abilities": [
+        {
+            "name": "Connected",
+            "value": 1
+        },
+        {
+            "name": "Dimensional Pocket",
+            "value": 2
+        },
+        {
+            "name": "Inventor",
+            "value": 3
+        },
+        {
+            "name": "Knowledge",
+            "qualifier": "Computer Whiz",
+            "value": 4
+        }
+    ],
+    "weaknesses": [
+        {
+            "name": "Absent-minded",
+            "value": 1
+        }
+    ],
+    "attacks": [
+        {
+            "name": "First Day of Sale Shove!",
+            "perks": [
+                {
+                    "name": "Affinity",
+                    "qualifier": "Nerdy",
+                    "cost": 0
+                }
+            ],
+            "flaws": [
+                {
+                    "name": "Ineffective",
+                    "cost": 0
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,16 @@
+{
+    "name": "First Day of Sale Shove!",
+    "perks": [
+        {
+            "name": "Affinity",
+            "qualifier": "Nerdy",
+            "cost": 0
+        }
+    ],
+    "flaws": [
+        {
+            "name": "Ineffective",
+            "cost": 0
+        }
+    ]
+}
