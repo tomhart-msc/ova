@@ -37,6 +37,37 @@ defmodule OVATest do
     options = %{as: %Character.Character{}}
     braun = Poison.decode!(json, options)
     assert braun.name == "Braun"
-    IO.inspect braun
+
+    # Verify that everything was decoded with the correct type
+    attack = Enum.at(braun.attacks, 0)
+    assert attack.__struct__ == Character.Attack
+    assert Enum.at(attack.perks, 0).__struct__ == Character.Attack.Perk
+    assert Enum.at(attack.flaws, 0).__struct__ == Character.Attack.Flaw
+    assert Enum.at(braun.abilities, 0).__struct__ == Character.Ability
+    assert Enum.at(braun.weaknesses, 0).__struct__ == Character.Weakness
+
+    [found, _] = Character.Character.transformation(braun)
+    assert :not_found == found
+    #IO.inspect braun
+  end
+
+  test "parse character with transformation" do
+    json = File.read!("./test/examples/fukiko.json")
+    options = %{as: %Character.Character{}}
+    fukiko = Poison.decode!(json, options)
+    assert fukiko.name == "Fukiko"
+    attack = Enum.at(fukiko.attacks, 0)
+    assert attack.__struct__ == Character.Attack
+    assert Enum.at(attack.perks, 0).__struct__ == Character.Attack.Perk
+    assert Enum.at(fukiko.abilities, 0).__struct__ == Character.Ability
+    assert Enum.at(fukiko.weaknesses, 0).__struct__ == Character.Weakness
+
+    [found, transform] = Character.Character.transformation(fukiko)
+    assert :ok == found
+    assert transform.details.__struct__ == Character.TransformationDetails
+    assert Enum.at(transform.details.abilities, 0).__struct__ == Character.Ability
+    assert Enum.at(transform.details.weaknesses, 0).__struct__ == Character.Weakness
+
+    #IO.inspect fukiko
   end
 end

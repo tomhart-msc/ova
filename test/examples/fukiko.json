@@ -1,0 +1,143 @@
+{
+    "name": "Fukiko",
+    "abilities": [
+        {
+            "name": "Cute!",
+            "value": 2
+        },
+        {
+            "name": "Quick",
+            "value": 2
+        },
+        {
+            "name": "Shape-Shifter",
+            "value": 2
+        },
+        {
+            "name": "Knowledge",
+            "qualifier": "Shoujo Manga",
+            "value": 4
+        },
+        {
+            "name": "Transformation",
+            "value": 4,
+            "details": {
+                "abilities": [
+                    {
+                        "name": "Attack",
+                        "value": 2
+                    },
+                    {
+                        "name": "Barrier",
+                        "value": 3,
+                        "details": {
+                            "perks": [
+                                {
+                                    "name": "Area effect",
+                                    "cost": 10
+                                }
+                            ],
+                            "flaws": [
+                                {
+                                    "name": "Elaborate Gestures",
+                                    "cost": 5
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "name": "Combat Expert",
+                        "value": 2
+                    },
+                    {
+                        "name": "Healer",
+                        "value": 2
+                    }
+                ],
+                "weaknesses": [
+                    {
+                        "name": "Bizzare Appearance",
+                        "qualifier": "Cat Features",
+                        "value": 1
+                    }
+                ]
+            }
+        }
+    ],
+    "weaknesses": [
+        {
+            "name": "Ageism",
+            "value": 2
+        },
+        {
+            "name": "Crybaby",
+            "value": 2
+        },
+        {
+            "name": "Focus",
+            "qualifier": "Powers Require Neko Transformation Locket",
+            "value": 2
+        }
+    ],
+    "attacks": [
+        {
+            "name": "Neko Neko Catnip Cantrip",
+            "perks": [
+                {
+                    "name": "Ranged",
+                    "qualifier": "",
+                    "cost": 0
+                },
+                {
+                    "name": "Affinity",
+                    "qualifier": "Love",
+                    "cost": 0
+                }
+            ]
+        },
+        {
+            "name": "Neko Neko Heart Burst",
+            "perks": [
+                {
+                    "name": "Ranged",
+                    "cost": 0
+                },
+                {
+                    "name": "Effective",
+                    "cost": 5,
+                    "value": 2
+                },
+                {
+                    "name": "Affinity",
+                    "qualifier": "Love",
+                    "cost": 0
+                }
+            ]
+        },
+        {
+            "name": "Neko Neko Wave",
+            "perks": [
+                {
+                    "name": "Area Effect",
+                    "cost": 10,
+                    "value": 2
+                },
+                {
+                    "name": "Stunning",
+                    "cost": 10
+                },
+                {
+                    "name": "Affinity",
+                    "qualifier": "Love",
+                    "cost": 0
+                }
+            ],
+            "flaws": [
+                {
+                    "name": "No Damage",
+                    "cost": 20
+                }
+            ]
+        }
+    ]
+}

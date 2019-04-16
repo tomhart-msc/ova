@@ -1,6 +1,6 @@
 # OVA
 
-This project provides a set of utilities to assist with running sessions of OVA: The Anime Role-Playing Game, by Wise Turtle Publishing (http://www.wiseturtle.com/products.html).
+This project provides a set of utilities to assist with running sessions of OVA: The Anime Role-Playing Game, by Wise Turtle Publishing (http://www.wiseturtle.com/games.html).
 
 ## Installation (Boilerplate)
 

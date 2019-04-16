@@ -4,6 +4,18 @@ defmodule Character.Character do
 
   defstruct [:name, :abilities, :weaknesses, :attacks]
 
+  def transformation(character) do
+    if_exists(Enum.find(character.abilities, fn x -> x.name == "Transformation" end))
+  end
+
+  defp if_exists(nil) do
+    [:not_found, nil]
+  end
+
+  defp if_exists(x) do
+    [:ok, x]
+  end
+
   defimpl Poison.Decoder, for: Character.Character do
     def decode(data, options) do
       # Data is the JSON, parsed as a map. It may already have been decoded and
@@ -20,44 +32,19 @@ defmodule Character.Character do
       |> Map.update!(
         :abilities,
         fn abilityList ->
-          decode_list(abilityList, &decode_ability/2, abilityOptions)
+          decode_list(abilityList, &decode_field/2, abilityOptions)
         end
       )
       # Transform each weakness into a Character.Weakness
       |> Map.update!(
         :weaknesses,
-        fn abilityList -> decode_list(abilityList, &decode_weakness/2, weaknessOptions) end
+        fn abilityList -> decode_list(abilityList, &decode_field/2, weaknessOptions) end
       )
       # Transform each attack into a Character.Attack
       |> Map.update!(
         :attacks,
-        fn abilityList -> decode_list(abilityList, &decode_attack/2, attackOptions) end
+        fn abilityList -> decode_list(abilityList, &decode_field/2, attackOptions) end
       )
-    end
-
-    defp decode_ability(%Character.Ability{} = ability, _) do
-      ability
-    end
-
-    defp decode_ability(ability, options) do
-      Poison.Decode.transform(ability, options)
-    end
-
-    defp decode_weakness(%Character.Weakness{} = weakness, _) do
-      weakness
-    end
-
-    defp decode_weakness(weakness, options) do
-      Poison.Decode.transform(weakness, options)
-    end
-
-    defp decode_attack(%Character.Attack{} = attack, _) do
-      attack
-    end
-
-    defp decode_attack(attack, options) do
-      # transform turns it into a Poison.Attack, and calling decode for Poison.Attack recurses (BUT DOESN'T)
-      Poison.Decode.transform(attack, options) |> Poison.Decoder.decode(options)
     end
   end
 end
