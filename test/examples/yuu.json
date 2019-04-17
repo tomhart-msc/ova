@@ -1,0 +1,72 @@
+{
+    "name": "Yuu",
+    "abilities": [
+        {
+            "name": "Companion",
+            "value": 4,
+            "details": {
+                "name": "Fenrir",
+                "abilities": [
+                    {
+                        "name": "Attack",
+                        "value": 3
+                    }
+                ],
+                "weaknesses": [
+                    {
+                        "name": "Bizzare Appearance",
+                        "value": 2
+                    }
+                ],
+                "attacks": [
+                    {
+                        "name": "Maul",
+                        "perks": [
+                            {
+                                "name": "Affinity",
+                                "value": "Normal Type"
+                            }
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "name": "Dimensional Pocket",
+            "value": 2
+        },
+        {
+            "name": "Inventor",
+            "value": 3
+        },
+        {
+            "name": "Knowledge",
+            "qualifier": "Computer Whiz",
+            "value": 4
+        }
+    ],
+    "weaknesses": [
+        {
+            "name": "Absent-minded",
+            "value": 1
+        }
+    ],
+    "attacks": [
+        {
+            "name": "First Day of Sale Shove!",
+            "perks": [
+                {
+                    "name": "Affinity",
+                    "qualifier": "Nerdy",
+                    "cost": 0
+                }
+            ],
+            "flaws": [
+                {
+                    "name": "Ineffective",
+                    "cost": 0
+                }
+            ]
+        }
+    ]
+}

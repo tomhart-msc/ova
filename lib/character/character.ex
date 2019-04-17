@@ -5,7 +5,15 @@ defmodule Character.Character do
   defstruct [:name, :abilities, :weaknesses, :attacks]
 
   def transformation(character) do
-    if_exists(Enum.find(character.abilities, fn x -> x.name == "Transformation" end))
+    get_ability(character, "Transformation")
+  end
+
+  def companion(character) do
+    get_ability(character, "Companion")
+  end
+
+  def get_ability(character, abilityName) do
+    if_exists(Enum.find(character.abilities, fn x -> x.name == abilityName end))
   end
 
   defp if_exists(nil) do

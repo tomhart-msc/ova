@@ -15,6 +15,11 @@ defmodule Character.Ability do
             ability(data, decode_field(data.details, %{as: %Character.BarrierDetails{}}))
         end
 
+        # Special case 3: The Companion ability contains another character
+        def decode(%{name: "Companion"} = data, _options) do
+            ability(data, decode_field(data.details, %{as: %Character.Character{}}))
+        end
+
         def decode(data, _options) do
             ability(data, nil)
         end

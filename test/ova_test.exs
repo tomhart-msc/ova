@@ -70,4 +70,24 @@ defmodule OVATest do
 
     #IO.inspect fukiko
   end
+
+  test "parse character with companion" do
+    json = File.read!("./test/examples/yuu.json")
+    options = %{as: %Character.Character{}}
+    yuu = Poison.decode!(json, options)
+    assert yuu.name == "Yuu"
+    attack = Enum.at(yuu.attacks, 0)
+    assert attack.__struct__ == Character.Attack
+    assert Enum.at(attack.perks, 0).__struct__ == Character.Attack.Perk
+    assert Enum.at(yuu.abilities, 0).__struct__ == Character.Ability
+    assert Enum.at(yuu.weaknesses, 0).__struct__ == Character.Weakness
+
+    [found, fenrir] = Character.Character.companion(yuu)
+    assert :ok == found
+    assert fenrir.details.__struct__ == Character.Character
+    assert Enum.at(fenrir.details.abilities, 0).__struct__ == Character.Ability
+    assert Enum.at(fenrir.details.weaknesses, 0).__struct__ == Character.Weakness
+
+    #IO.inspect yuu
+  end
 end
