@@ -1,0 +1,6 @@
+{
+    "type": "buff",
+    "stat": "Endurance",
+    "target": "self",
+    "by": 10
+}

@@ -1,6 +1,6 @@
 defmodule Character.Character do
   @derive [Poison.Encoder]
-  import Character.Poison.Helpers
+  import Json.Helpers
 
   defstruct [:name, :abilities, :weaknesses, :attacks]
 

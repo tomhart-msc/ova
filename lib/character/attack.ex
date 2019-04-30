@@ -1,5 +1,5 @@
 defmodule Character.Attack do
-  import Character.Poison.Helpers
+  import Json.Helpers
   defstruct [:name, :perks, :flaws]
 
   defimpl Poison.Decoder, for: Character.Attack do

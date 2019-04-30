@@ -1,6 +1,6 @@
 defmodule Character.TransformationDetails do
   defstruct [:abilities, :weaknesses]
-  import Character.Poison.Helpers
+  import Json.Helpers
 
   defimpl Poison.Decoder, for: Character.TransformationDetails do
     def decode(data, options) do

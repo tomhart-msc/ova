@@ -10,12 +10,11 @@ defmodule OVATest do
     refute Enum.empty?(File.ls!("./test/examples"))
   end
 
-  #test "parse ability" do
-  #  json = File.read!("./test/examples/basic_ability.json")
-  #  a = Poison.decode!(json, as: %Character.Ability{})
-  #  assert a.name == "Knowledge"
-  #  IO.inspect a
-  #end
+  test "parse ability" do
+    json = File.read!("./test/examples/basic_ability.json")
+    a = Poison.decode!(json, as: %Character.Ability{})
+    assert a.name == "Knowledge"
+  end
 
   # Examples of the Poison library use Poison.Decode.decode, which was removed
   # in Poison 4.0. Use Poison.Decode.transform to recursively transform data.
@@ -89,5 +88,33 @@ defmodule OVATest do
     assert Enum.at(fenrir.details.weaknesses, 0).__struct__ == Character.Weakness
 
     #IO.inspect yuu
+  end
+
+  test "default effect" do
+    effect = Trait.Effect.default
+    assert effect.__struct__ == Trait.Effect
+    assert effect.type == :buff
+    assert effect.target == :self
+  end
+
+  test "parse effect" do
+    json = File.read!("./test/examples/effect.json")
+    effect = Poison.decode!(json, as: Trait.Effect.default)
+    assert effect.__struct__ == Trait.Effect
+    assert effect.type == :buff
+    assert effect.stat == :endurance
+    assert effect.target == :self
+    assert effect.by == 10
+    assert effect.optional == false
+  end
+
+  test "parse a list of abilities and their effects on the game" do
+    json = File.read!("./assets/abilities.json")
+    l = Poison.decode!(json, as: [%Trait.Ability{}])
+    tough = Enum.find(l, fn a -> a.name == "Tough" end)
+    assert tough.effect.__struct__ == Trait.Effect
+    knowledge = Enum.find(l, fn a -> a.name == "Knowledge" end)
+    assert knowledge.cost_multiplier == 0.5
+    #IO.inspect(l)
   end
 end

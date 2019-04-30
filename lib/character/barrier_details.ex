@@ -1,6 +1,6 @@
 defmodule Character.BarrierDetails do
   defstruct [:perks, :flaws]
-  import Character.Poison.Helpers
+  import Json.Helpers
 
   defimpl Poison.Decoder, for: Character.BarrierDetails do
     def decode(data, options) do

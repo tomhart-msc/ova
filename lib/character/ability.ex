@@ -1,6 +1,6 @@
 defmodule Character.Ability do
     defstruct [:name, :qualifier, :value, :details]
-    import Character.Poison.Helpers
+    import Json.Helpers
 
     defimpl Poison.Decoder, for: Character.Ability do
 
