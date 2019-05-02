@@ -1,0 +1,264 @@
+[
+    {
+        "name": "Agile",
+        "effect": {
+            "type": "buff",
+            "stat": "Attack",
+            "target": "self"
+        }
+    },
+    {
+        "name": "Armored",
+        "effect": {
+            "type": "debuff",
+            "stat": "DX",
+            "target": "enemy"
+        }
+    },
+    {
+        "name": "Art of Invisibility"
+    },
+    {
+        "name": "Attack",
+        "effect": {
+            "type": "buff",
+            "stat": "DX",
+            "target": "self"
+        }
+    },
+    {
+        "name": "Barrier",
+        "effect": {
+            "type": "replace",
+            "stat": "Defense",
+            "target": "self",
+            "optional": true
+        },
+        "details": "PerksFlaws",
+        "comment": "Has additional effects which are not modeled."
+    },
+    {
+        "name": "Beautiful"
+    },
+    {
+        "name": "Charismatic"
+    },
+    {
+        "name": "Combat Expert",
+        "effect": {
+            "type": "buff",
+            "stat": "Attack",
+            "target": "self"
+        }
+    },
+    {
+        "name": "Companion",
+        "details": "Character"
+    },
+    {
+        "name": "Connected"
+    },
+    {
+        "name": "Cute!"
+    },
+    {
+        "name": "Dexterous"
+    },
+    {
+        "name": "Dimensional Pocket"
+    },
+    {
+        "name": "Endurance Reserve",
+        "effect": {
+            "type": "buff",
+            "stat": "Endurance",
+            "target": "self",
+            "by": 20,
+            "comment": "restrictions apply but are not modeled"
+        }
+    },
+    {
+        "name": "Evasive",
+        "effect": {
+            "type": "buff",
+            "stat": "Defense",
+            "target": "self"
+        }
+    },
+    {
+        "name": "Famous"
+    },
+    {
+        "name": "Flight"
+    },
+    {
+        "name": "Gear",
+        "details": "AbilitiesWeaknesses"
+    },
+    {
+        "name": "Healer",
+        "details": "PerksFlaws"
+    },
+    {
+        "name": "Heightened Sense"
+    },
+    {
+        "name": "Illusionist"
+    },
+    {
+        "name": "Incorporeal Form",
+        "effect": {
+            "type": "replace",
+            "stat": "Defense",
+            "optional": true,
+            "target": "self"
+        }
+    },
+    {
+        "name": "Intimidating"
+    },
+    {
+        "name": "Intuitive"
+    },
+    {
+        "name": "Inventor"
+    },
+    {
+        "name": "Invisibility"
+    },
+    {
+        "name": "Iron-Willed"
+    },
+    {
+        "name": "Knowledge",
+        "cost_multiplier": 0.5
+    },
+    {
+        "name": "Life Support"
+    },
+    {
+        "name": "Lucky"
+    },
+    {
+        "name": "Magic, Arcane"
+    },
+    {
+        "name": "Magic, Witchcraft"
+    },
+    {
+        "name": "Minions"
+    },
+    {
+        "name": "Passion"
+    },
+    {
+        "name": "Perceptive"
+    },
+    {
+        "name": "Performer"
+    },
+    {
+        "name": "Pilot"
+    },
+    {
+        "name": "Position of Power"
+    },
+    {
+        "name": "Psychic"
+    },
+    {
+        "name": "Quick",
+        "effect": {
+            "type": "buff",
+            "stat": "Defense",
+            "target": "self"
+        }
+    },
+    {
+        "name": "Resistance",
+        "details": "Affinity",
+        "effect": {
+            "type": "buff",
+            "stat": "Defense",
+            "target": "self",
+            "match": "Affinity"
+        }
+    },
+    {
+        "name": "Shape-Shifter"
+    },
+    {
+        "name": "Sixth Sense"
+    },
+    {
+        "name": "Smart"
+    },
+    {
+        "name": "Spirit Medium"
+    },
+    {
+        "name": "Strong",
+        "effect": {
+            "type": "buff",
+            "stat": "DX",
+            "target": "self"
+        }
+    },
+    {
+        "name": "Telekinesis",
+        "effect": {
+            "type": "buff",
+            "stat": "DX",
+            "target": "self"
+        }
+    },
+    {
+        "name": "Teleport",
+        "effect": {
+            "type": "replace",
+            "stat": "Defense",
+            "optional": true,
+            "target": "self"
+        }
+    },
+    {
+        "name": "Time Freeze"
+    },
+    {
+        "name": "Tough",
+        "effect": {
+            "type": "buff",
+            "stat": "Health",
+            "target": "self",
+            "by": 10
+        }
+    },
+    {
+        "name": "Transformation",
+        "details": "AbilitiesWeaknesses"
+    },
+    {
+        "name": "Unique Ability"
+    },
+    {
+        "name": "Vehicle",
+        "comment": "Vehicle sub-characters are not supported"
+    },
+    {
+        "name": "Vigorous",
+        "effect": {
+            "type": "buff",
+            "stat": "Endurance",
+            "target": "self",
+            "by": 10
+        },
+        "comment": "Actually 60 endurance at level five but I don't want to model a special case."
+    },
+    {
+        "name": "Walking Arsenal",
+        "comment": "Creation of new gear ad-hoc is not supported"
+    },
+    {
+        "name": "Wealthy"
+    }
+]

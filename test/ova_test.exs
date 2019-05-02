@@ -11,17 +11,23 @@ defmodule OVATest do
   end
 
   test "parse ability" do
+    json = File.read!("./assets/abilities.json")
+    abilities = Poison.decode!(json, as: [%Trait.Ability{}])
+
     json = File.read!("./test/examples/basic_ability.json")
-    a = Poison.decode!(json, as: %Character.Ability{})
+    a = Poison.decode!(json, as: %Character.Ability{}, abilities: abilities)
     assert a.name == "Knowledge"
   end
 
   # Examples of the Poison library use Poison.Decode.decode, which was removed
   # in Poison 4.0. Use Poison.Decode.transform to recursively transform data.
   test "how does poison work" do
+    json = File.read!("./assets/abilities.json")
+    abilities = Poison.decode!(json, as: [%Trait.Ability{}])
+
     json = File.read!("./test/examples/basic_ability.json")
     map = Poison.decode!(json)
-    a = Poison.Decode.transform(map, %{as: %Character.Ability{}})
+    a = Poison.Decode.transform(map, %{as: %Character.Ability{}, abilities: abilities})
     assert a.name == "Knowledge"
   end
 
@@ -32,8 +38,11 @@ defmodule OVATest do
   end
 
   test "parse character" do
+    json = File.read!("./assets/abilities.json")
+    abilities = Poison.decode!(json, as: [%Trait.Ability{}])
+
     json = File.read!("./test/examples/braun.json")
-    options = %{as: %Character.Character{}}
+    options = %{as: %Character.Character{}, abilities: abilities}
     braun = Poison.decode!(json, options)
     assert braun.name == "Braun"
 
@@ -51,8 +60,11 @@ defmodule OVATest do
   end
 
   test "parse character with transformation" do
+    json = File.read!("./assets/abilities.json")
+    abilities = Poison.decode!(json, as: [%Trait.Ability{}])
+
     json = File.read!("./test/examples/fukiko.json")
-    options = %{as: %Character.Character{}}
+    options = %{as: %Character.Character{}, abilities: abilities}
     fukiko = Poison.decode!(json, options)
     assert fukiko.name == "Fukiko"
     attack = Enum.at(fukiko.attacks, 0)
@@ -63,7 +75,7 @@ defmodule OVATest do
 
     [found, transform] = Character.Character.transformation(fukiko)
     assert :ok == found
-    assert transform.details.__struct__ == Character.TransformationDetails
+    assert transform.details.__struct__ == Character.AbilitiesWeaknesses
     assert Enum.at(transform.details.abilities, 0).__struct__ == Character.Ability
     assert Enum.at(transform.details.weaknesses, 0).__struct__ == Character.Weakness
 
@@ -71,8 +83,11 @@ defmodule OVATest do
   end
 
   test "parse character with companion" do
+    json = File.read!("./assets/abilities.json")
+    abilities = Poison.decode!(json, as: [%Trait.Ability{}])
+
     json = File.read!("./test/examples/yuu.json")
-    options = %{as: %Character.Character{}}
+    options = %{as: %Character.Character{}, abilities: abilities}
     yuu = Poison.decode!(json, options)
     assert yuu.name == "Yuu"
     attack = Enum.at(yuu.attacks, 0)

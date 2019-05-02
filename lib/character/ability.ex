@@ -3,25 +3,26 @@ defmodule Character.Ability do
     import Json.Helpers
 
     defimpl Poison.Decoder, for: Character.Ability do
+        @details %{perksflaws: %{as: %Character.PerksFlaws{}},
+            character: %{as: %Character.Character{}},
+            abilitiesweaknesses: %{as: %Character.AbilitiesWeaknesses{}}}
 
-        # Special case 1: The Transformation ability includes a list of abilities and weaknesses
-        # for the character's transformed form.
-        def decode(%{name: "Transformation"} = data, _options) do
-            ability(data, decode_field(data.details, %{as: %Character.TransformationDetails{}}))
+        def decode(data, options) do
+            detailsType = details_type(data, options.abilities)
+            ability(data, decode_details(data, detailsType, options))
         end
 
-        # Special case 2: The Barrier ability has perks and flaws
-        def decode(%{name: "Barrier"} = data, _options) do
-            ability(data, decode_field(data.details, %{as: %Character.BarrierDetails{}}))
+        defp details_type(data, abilities) do
+            ability = Enum.find(abilities, fn a -> a.name == data.name end)
+            Map.get(@details, ability.details)
         end
 
-        # Special case 3: The Companion ability contains another character
-        def decode(%{name: "Companion"} = data, _options) do
-            ability(data, decode_field(data.details, %{as: %Character.Character{}}))
+        defp decode_details(_, nil, _) do
+            nil
         end
 
-        def decode(data, _options) do
-            ability(data, nil)
+        defp decode_details(data, type, options) do
+            decode_field(data.details, Map.merge(options, type))
         end
 
         defp ability(data, details) do

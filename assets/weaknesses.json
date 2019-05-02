@@ -1,0 +1,247 @@
+[
+    {
+        "name": "Absent-Minded"
+    },
+    {
+        "name": "Accidental Transformation"
+    },
+    {
+        "name": "Ageism"
+    },
+    {
+        "name": "Airhead"
+    },
+    {
+        "name": "Amnesia"
+    },
+    {
+        "name": "Arrogant"
+    },
+    {
+        "name": "Awkward Size"
+    },
+    {
+        "name": "Bizzare Appearance"
+    },
+    {
+        "name": "Clumsy",
+        "effect": {
+            "type": "debuff",
+            "stat": "Attack",
+            "target": "self"
+        }
+    },
+    {
+        "name": "Code of Conduct"
+    },
+    {
+        "name": "Compulsion"
+    },
+    {
+        "name": "Coward"
+    },
+    {
+        "name": "Crybaby"
+    },
+    {
+        "name": "Dense"
+    },
+    {
+        "name": "Dependency",
+        "comment": "Debuffs all actions when lacking. Not modeled."
+    },
+    {
+        "name": "Dull"
+    },
+    {
+        "name": "Easily Distracted"
+    },
+    {
+        "name": "Emotionless"
+    },
+    {
+        "name": "Endurance Use",
+        "comment": "Adds an endurance cost to an ability. Not modeled."
+    },
+    {
+        "name": "Fear"
+    },
+    {
+        "name": "Focus",
+        "comment": "Some abilities require an item. Not modeled."
+    },
+    {
+        "name": "Frail",
+        "effect": {
+            "type": "debuff",
+            "stat": "Health",
+            "target": "self",
+            "by": 10
+        }
+    },
+    {
+        "name": "Fussy"
+    },
+    {
+        "name": "Greedy"
+    },
+    {
+        "name": "Guardian"
+    },
+    {
+        "name": "Hatred"
+    },
+    {
+        "name": "Impaired Sense"
+    },
+    {
+        "name": "Impulsive"
+    },
+    {
+        "name": "Ineptitude",
+        "cost_multiplier": 0.5,
+        "comment": "Opposite of knowledge"
+    },
+    {
+        "name": "Infamous"
+    },
+    {
+        "name": "Jittery"
+    },
+    {
+        "name": "Kind-Hearted"
+    },
+    {
+        "name": "Languid",
+        "effect": {
+            "type": "debuff",
+            "stat": "Endurance",
+            "target": "self",
+            "by": 10
+        }
+    },
+    {
+        "name": "Lecherous"
+    },
+    {
+        "name": "Limited Uses",
+        "comment": "Limits the number of times an ability can be used without reloading. Not modeled."
+    },
+    {
+        "name": "Loner"
+    },
+    {
+        "name": "Love Interest"
+    },
+    {
+        "name": "Love Magnet"
+    },
+    {
+        "name": "Mute"
+    },
+    {
+        "name": "Naive"
+    },
+    {
+        "name": "Nosebleeder",
+        "comment": "Nose bleeds can debuff actions. Not modeled."
+    },
+    {
+        "name": "Oblivious"
+    },
+    {
+        "name": "Obsession"
+    },
+    {
+        "name": "Outcast"
+    },
+    {
+        "name": "Overconfident"
+    },
+    {
+        "name": "Pacifist"
+    },
+    {
+        "name": "Poor"
+    },
+    {
+        "name": "Quirk"
+    },
+    {
+        "name": "Restricted Freedom"
+    },
+    {
+        "name": "Rival"
+    },
+    {
+        "name": "Room for Two"
+    },
+    {
+        "name": "Rude"
+    },
+    {
+        "name": "Secret"
+    },
+    {
+        "name": "Sensitivity"
+    },
+    {
+        "name": "Servitude"
+    },
+    {
+        "name": "Short-Tempered"
+    },
+    {
+        "name": "Shy"
+    },
+    {
+        "name": "Slow",
+        "effect": {
+            "type": "debuff",
+            "stat": "Defense",
+            "target": "self"
+        },
+        "comment": "Also decreases initiative. Seems to be the only trait debuffing two things. Not modeled in DSL."
+    },
+    {
+        "name": "Soft Spot"
+    },
+    {
+        "name": "Split Personality"
+    },
+    {
+        "name": "Stubborn"
+    },
+    {
+        "name": "Suppressed Power",
+        "comment": "Debuffs an ability when something is not present. Not modeled."
+    },
+    {
+        "name": "Trigger",
+        "comment": "Something is required to turn on your ability. Not modeled."
+    },
+    {
+        "name": "Unique Weakness"
+    },
+    {
+        "name": "Unlucky"
+    },
+    {
+        "name": "Vulnerability",
+        "comment": "Table-based effects and multiple effects. Not modeled."
+    },
+    {
+        "name": "Wanted"
+    },
+    {
+        "name": "Weak",
+        "effect": {
+            "type": "debuff",
+            "stat": "DX",
+            "target": "self"
+        }
+    },
+    {
+        "name": "Weak-Willed"
+    }
+]

@@ -1,8 +1,8 @@
-defmodule Character.BarrierDetails do
+defmodule Character.PerksFlaws do
   defstruct [:perks, :flaws]
   import Json.Helpers
 
-  defimpl Poison.Decoder, for: Character.BarrierDetails do
+  defimpl Poison.Decoder, for: Character.PerksFlaws do
     def decode(data, options) do
       perkOptions = %{options | as: %Character.Attack.Perk{}}
       flawOptions = %{options | as: %Character.Attack.Flaw{}}

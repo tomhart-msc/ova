@@ -1,8 +1,8 @@
-defmodule Character.TransformationDetails do
+defmodule Character.AbilitiesWeaknesses do
   defstruct [:abilities, :weaknesses]
   import Json.Helpers
 
-  defimpl Poison.Decoder, for: Character.TransformationDetails do
+  defimpl Poison.Decoder, for: Character.AbilitiesWeaknesses do
     def decode(data, options) do
       weaknessOptions = %{options | as: %Character.Weakness{}}
       abilityOptions = %{options | as: %Character.Ability{}}
