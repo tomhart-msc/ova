@@ -2,13 +2,29 @@ defmodule Character.Ability do
     defstruct [:name, :qualifier, :value, :details]
     import Json.Helpers
 
+    @type t :: %Character.Ability{
+        name: String.t,
+        qualifier: String.t,
+        value: non_neg_integer(),
+        details: any()
+    }
+
+    # Given an ability (eg. Strong at rank 3), statistic (eg. Health), and
+    # a list of traits (abilities and weaknesses),
+    # calculates the effect the ability has on this stat.
+    def stat_effect(ability, stat, traits) do
+        trait = Trait.Traits.byName(traits, ability.name)
+        effect = Trait.Ability.effect(trait)
+        Trait.Effect.effectOnCharacterStat(effect, stat) * ability.value
+    end
+
     defimpl Poison.Decoder, for: Character.Ability do
         @details %{perksflaws: %{as: %Character.PerksFlaws{}},
             character: %{as: %Character.Character{}},
             abilitiesweaknesses: %{as: %Character.AbilitiesWeaknesses{}}}
 
         def decode(data, options) do
-            detailsType = details_type(data, options.abilities)
+            detailsType = details_type(data, Enum.concat(options.abilities, options.weaknesses))
             ability(data, decode_details(data, detailsType, options))
         end
 

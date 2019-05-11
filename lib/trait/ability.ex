@@ -12,6 +12,14 @@ defmodule Trait.Ability do
     }
   end
 
+  def effect(nil) do
+    nil
+  end
+
+  def effect(ability) do
+    ability.effect
+  end
+
   # Enumerates the allowed types of details for an ability
   def details do
     @details

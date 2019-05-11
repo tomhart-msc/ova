@@ -6,6 +6,8 @@ defmodule Json.Helpers do
   end
 
   def decode_field(data, options) do
+    #IO.puts "Transforming "
+    #IO.inspect data
     # Calling transform structures the field, and calling decode recurses
     Poison.Decode.transform(data, options) |> Poison.Decoder.decode(options)
   end

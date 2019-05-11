@@ -4,7 +4,7 @@ defmodule Character.AbilitiesWeaknesses do
 
   defimpl Poison.Decoder, for: Character.AbilitiesWeaknesses do
     def decode(data, options) do
-      weaknessOptions = %{options | as: %Character.Weakness{}}
+      weaknessOptions = %{options | as: %Character.Ability{}}
       abilityOptions = %{options | as: %Character.Ability{}}
 
       data
@@ -15,7 +15,7 @@ defmodule Character.AbilitiesWeaknesses do
           decode_list(abilityList, &decode_field/2, abilityOptions)
         end
       )
-      # Transform each weakness into a Character.Weakness
+      # Transform each weakness into a Character.Ability
       |> Map.update!(
         :weaknesses,
         fn abilityList -> decode_list(abilityList, &decode_field/2, weaknessOptions) end

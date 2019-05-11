@@ -2,6 +2,12 @@ defmodule Character.Attack do
   import Json.Helpers
   defstruct [:name, :perks, :flaws]
 
+  @type t :: %Character.Attack{
+    name: String.t,
+    perks: any(),
+    flaws: any() #TODO
+  }
+
   defimpl Poison.Decoder, for: Character.Attack do
     def decode(data, options) do
       perkOptions = %{options | as: %Character.Attack.Perk{}}

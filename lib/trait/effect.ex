@@ -34,6 +34,18 @@ defmodule Trait.Effect do
     }
   end
 
+  def effectOnCharacterStat(effect = %Trait.Effect{type: :buff, stat: stat, target: :self}, stat) do
+    effect.by
+  end
+
+  def effectOnCharacterStat(effect = %Trait.Effect{type: :debuff, stat: stat, target: :self}, stat) do
+    effect.by * -1
+  end
+
+  def effectOnCharacterStat(_, _) do
+    0
+  end
+
   defimpl Poison.Decoder, for: Trait.Effect do
     def decode(data, _) do
       data

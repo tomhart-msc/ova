@@ -4,6 +4,13 @@ defmodule Character.Character do
 
   defstruct [:name, :abilities, :weaknesses, :attacks]
 
+  @type t :: %Character.Character{
+    name: String.t,
+    abilities: list(Character.Ability.t),
+    weaknesses: list(Character.Ability.t),
+    attacks: list(Character.Attack.t)
+  }
+
   def transformation(character) do
     get_ability(character, "Transformation")
   end
@@ -24,6 +31,10 @@ defmodule Character.Character do
     [:ok, x]
   end
 
+  def health(character, traits) do
+    Enum.reduce(character.abilities, 40, fn ability, acc -> acc + Character.Ability.stat_effect(ability, :health, traits) end)
+  end
+
   defimpl Poison.Decoder, for: Character.Character do
     def decode(data, options) do
       # Data is the JSON, parsed as a map. It may already have been decoded and
@@ -32,7 +43,6 @@ defmodule Character.Character do
       # transformed into lists of structs.
       # Options are things like "as: %Character.Character{}"
       abilityOptions = %{options | as: %Character.Ability{}}
-      weaknessOptions = %{options | as: %Character.Weakness{}}
       attackOptions = %{options | as: %Character.Attack{}}
 
       data
@@ -43,10 +53,10 @@ defmodule Character.Character do
           decode_list(abilityList, &decode_field/2, abilityOptions)
         end
       )
-      # Transform each weakness into a Character.Weakness
+      # Transform each weakness into a Character.Ability
       |> Map.update!(
         :weaknesses,
-        fn abilityList -> decode_list(abilityList, &decode_field/2, weaknessOptions) end
+        fn abilityList -> decode_list(abilityList, &decode_field/2, abilityOptions) end
       )
       # Transform each attack into a Character.Attack
       |> Map.update!(
