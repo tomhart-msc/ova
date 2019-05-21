@@ -35,6 +35,10 @@ defmodule Character.Character do
     Enum.reduce(character.abilities, 40, fn ability, acc -> acc + Character.Ability.stat_effect(ability, :health, traits) end)
   end
 
+  def endurance(character, traits) do
+    Enum.reduce(character.abilities, 40, fn ability, acc -> acc + Character.Ability.stat_effect(ability, :endurance, traits) end)
+  end
+
   defimpl Poison.Decoder, for: Character.Character do
     def decode(data, options) do
       # Data is the JSON, parsed as a map. It may already have been decoded and
@@ -42,26 +46,26 @@ defmodule Character.Character do
       # pattern match against abilities and weaknesses which have already been
       # transformed into lists of structs.
       # Options are things like "as: %Character.Character{}"
-      abilityOptions = %{options | as: %Character.Ability{}}
-      attackOptions = %{options | as: %Character.Attack{}}
+      ability_options = %{options | as: %Character.Ability{}}
+      attack_options= %{options | as: %Character.Attack{}}
 
       data
       # Transform each ability into a Character.Ability
       |> Map.update!(
         :abilities,
-        fn abilityList ->
-          decode_list(abilityList, &decode_field/2, abilityOptions)
+        fn list ->
+          decode_list(list, &decode_field/2, ability_options)
         end
       )
       # Transform each weakness into a Character.Ability
       |> Map.update!(
         :weaknesses,
-        fn abilityList -> decode_list(abilityList, &decode_field/2, abilityOptions) end
+        fn list -> decode_list(list, &decode_field/2, ability_options) end
       )
       # Transform each attack into a Character.Attack
       |> Map.update!(
         :attacks,
-        fn abilityList -> decode_list(abilityList, &decode_field/2, attackOptions) end
+        fn list -> decode_list(list, &decode_field/2, attack_options) end
       )
     end
   end

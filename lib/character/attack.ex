@@ -10,19 +10,19 @@ defmodule Character.Attack do
 
   defimpl Poison.Decoder, for: Character.Attack do
     def decode(data, options) do
-      perkOptions = %{options | as: %Character.Attack.Perk{}}
-      flawOptions = %{options | as: %Character.Attack.Flaw{}}
+      perk_options = %{options | as: %Character.Attack.Perk{}}
+      flaw_options = %{options | as: %Character.Attack.Flaw{}}
       data
       |> Map.update!(
         :perks,
         fn list ->
-          decode_list(list, &decode_field/2, perkOptions)
+          decode_list(list, &decode_field/2, perk_options)
         end
       )
       |> Map.update!(
         :flaws,
         fn list ->
-          decode_list(list, &decode_field/2, flawOptions)
+          decode_list(list, &decode_field/2, flaw_options)
         end
       )
     end

@@ -24,8 +24,8 @@ defmodule Character.Ability do
             abilitiesweaknesses: %{as: %Character.AbilitiesWeaknesses{}}}
 
         def decode(data, options) do
-            detailsType = details_type(data, Enum.concat(options.abilities, options.weaknesses))
-            ability(data, decode_details(data, detailsType, options))
+            type = details_type(data, Enum.concat(options.abilities, options.weaknesses))
+            ability(data, decode_details(data, type, options))
         end
 
         defp details_type(data, abilities) do

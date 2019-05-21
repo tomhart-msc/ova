@@ -9,7 +9,7 @@ defmodule Json.Helpers do
     #IO.puts "Transforming "
     #IO.inspect data
     # Calling transform structures the field, and calling decode recurses
-    Poison.Decode.transform(data, options) |> Poison.Decoder.decode(options)
+    data |> Poison.Decode.transform(options) |> Poison.Decoder.decode(options)
   end
 
   def decode_list(nil, _, _) do
