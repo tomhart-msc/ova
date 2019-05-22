@@ -1,4 +1,8 @@
 defmodule Mix.Tasks.Roll do
+    @moduledoc """
+    This module defines a mix command to roll dice. It takes as an argument the number of dice to roll.
+    """
+
     use Mix.Task
 
     defp roll({n, ""}) do

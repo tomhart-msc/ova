@@ -1,4 +1,9 @@
 defmodule Character.Attack do
+  @moduledoc """
+  This module defines the structure of a perk of a character's attack. An attack has a name, zero or more perks,
+  and zero or more flaws.
+  """
+
   import Json.Helpers
   defstruct [:name, :perks, :flaws]
 

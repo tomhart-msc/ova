@@ -1,4 +1,8 @@
 defmodule Character.Ability do
+    @moduledoc """
+    This module defines the structure of a character's ability or weakness.
+    """
+
     defstruct [:name, :qualifier, :value, :details]
     import Json.Helpers
 

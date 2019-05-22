@@ -1,4 +1,9 @@
 defmodule Character.Character do
+  @moduledoc """
+  This is the main module for storing an OVA character as a character sheet. A character has a name,
+  a list of abilities, a list of weaknesses, and a list of attacks.
+  """
+
   @derive [Poison.Encoder]
   import Json.Helpers
 
@@ -47,7 +52,7 @@ defmodule Character.Character do
       # transformed into lists of structs.
       # Options are things like "as: %Character.Character{}"
       ability_options = %{options | as: %Character.Ability{}}
-      attack_options= %{options | as: %Character.Attack{}}
+      attack_options = %{options | as: %Character.Attack{}}
 
       data
       # Transform each ability into a Character.Ability

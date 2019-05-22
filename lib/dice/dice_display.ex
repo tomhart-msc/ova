@@ -1,5 +1,8 @@
 defmodule DiceDisplay do
-    
+    @moduledoc """
+    This module contains a textual UI layer for displaying dice rolls using Unicode.
+    """
+
     # Warning: These likely will display incorrectly in the Windows console.
     @faces %{1 => "⚀", 2 => "⚁", 3 => "⚂", 4 => "⚃", 5 => "⚄", 6 => "⚅"}
 

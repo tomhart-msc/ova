@@ -1,4 +1,9 @@
 defmodule Trait.Traits do
+  @moduledoc """
+  This module defines a list of traits in OVA. A trait is an ability or weakness; the two are mechanically
+  identical, but abilities have beneficial effects and weaknesses have harmful ones.
+  """
+
   defstruct [:list]
 
   def fromAbilitiesAndWeaknesses(abilities, weaknesses) do

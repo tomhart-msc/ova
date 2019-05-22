@@ -1,4 +1,10 @@
 defmodule Trait.Effect do
+  @moduledoc """
+  This module contains the metadata for the effect of an OVA trait. A trait can buff, debuff, or replace
+  a statistic for a character, or an enemy attacking the character. Attack, defense, DX, endurance,
+  or health are the statistics that can be affected.
+  """
+
   @types [:buff, :debuff, :replace]
   @stats [:attack, :defense, :dx, :endurance, :health]
   @targets [:self, :enemy]

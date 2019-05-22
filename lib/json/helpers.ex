@@ -1,6 +1,9 @@
 defmodule Json.Helpers do
+  @moduledoc """
+  This module contains helper functions for parsing data into typed structures.
+  """
 
-  def decode_field(%{__struct__: _} = data, _options) do
+  def decode_field(data = %{__struct__: _}, _options) do
     # Already decoded
     data
   end

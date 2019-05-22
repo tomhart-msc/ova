@@ -1,5 +1,7 @@
 defmodule Dice do
-
+    @moduledoc """
+    This module defines dice rolls according to OVA's semantics for doubles.
+    """
     def empty, do: %{1 => 0, 2 => 0, 3 => 0, 4 => 0, 5 => 0, 6 => 0}
 
     defp roll(map, _, 0) do
@@ -7,7 +9,7 @@ defmodule Dice do
     end
 
     defp roll(map, roll, n) do
-        roll(%{map | roll => map[roll] + 1}, :rand.uniform(6), n-1)
+        roll(%{map | roll => map[roll] + 1}, :rand.uniform(6), n - 1)
     end
 
     def roll(n) when is_integer(n) do
