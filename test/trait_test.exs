@@ -30,4 +30,18 @@ defmodule TraitTest do
     #IO.inspect(l)
   end
 
+  test "parse a list of perks and their effects" do
+    json = File.read!("./assets/perks.json")
+    l = Poison.decode!(json, as: [%Trait.Perk{}])
+    ae = Enum.find(l, fn a -> a.name == "Area Effect" end)
+    assert ae.cost == 10
+    effect = ae.effect
+    assert effect.__struct__ == Trait.Effect
+    assert effect.type == :debuff
+    assert effect.stat == :defense
+    assert effect.target == :enemy
+    assert effect.by == 1
+    assert effect.optional == false
+  end
+
 end

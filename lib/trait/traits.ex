@@ -11,7 +11,7 @@ defmodule Trait.Traits do
   end
 
   # Given a list of traits, finds the trait with the given name if one exists.
-  def byName(traits, name) do
+  def byName(traits, name) when is_binary(name) do
     Enum.find(traits.list, fn t -> t.name == name end)
   end
 end

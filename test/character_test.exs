@@ -32,7 +32,7 @@ defmodule CharacterTest do
     attack = Enum.at(braun.attacks, 0)
     assert attack.__struct__ == Character.Attack
     assert Enum.at(attack.perks, 0).__struct__ == Character.Attack.Perk
-    assert Enum.at(attack.flaws, 0).__struct__ == Character.Attack.Flaw
+    assert Enum.at(attack.flaws, 0).__struct__ == Character.Attack.Perk
     assert Enum.at(braun.abilities, 0).__struct__ == Character.Ability
     assert Enum.at(braun.weaknesses, 0).__struct__ == Character.Ability
 
@@ -60,7 +60,12 @@ defmodule CharacterTest do
     assert Enum.at(transform.details.abilities, 0).__struct__ == Character.Ability
     assert Enum.at(transform.details.weaknesses, 0).__struct__ == Character.Ability
 
-    #IO.inspect fukiko
+    neko_neko_wave = Enum.find(fukiko.attacks, fn a -> a.name == "Neko Neko Wave" end)
+    assert neko_neko_wave != nil
+    area_effect = Enum.find(neko_neko_wave.perks, fn p -> p.name == "Area Effect" end)
+    assert area_effect != nil
+    assert area_effect.rank == 2
+    assert area_effect.qualifier == ""
   end
 
   test "parse character with companion" do
@@ -80,8 +85,47 @@ defmodule CharacterTest do
     assert fenrir.details.__struct__ == Character.Character
     assert Enum.at(fenrir.details.abilities, 0).__struct__ == Character.Ability
     assert Enum.at(fenrir.details.weaknesses, 0).__struct__ == Character.Ability
+  end
 
-    #IO.inspect yuu
+  test "calculate attack details" do
+    json = File.read!("./test/examples/superman.json")
+    options = %{as: %Character.Character{}, abilities: abilities(), weaknesses: weaknesses()}
+    char = Poison.decode!(json, options)
+    traits = Trait.Traits.fromAbilitiesAndWeaknesses(abilities(), weaknesses())
+    modifiers = Trait.Modifiers.fromPerksAndFlaws(perks(), flaws())
+    Enum.each(char.attacks, fn attack -> check_attack(char, attack, traits, modifiers) end)
+  end
+
+  defp check_attack(character, attack = %Character.Attack{name: "Heat Vision"}, traits, modifiers) do
+    {attack, attack_dice, dx, endurance} = Character.Attack.details(character, attack, traits, modifiers)
+    assert attack.name == "Heat Vision"
+    assert attack_dice == 2
+    assert dx == 3
+    assert endurance == 0
+  end
+
+  defp check_attack(character, attack = %Character.Attack{name: "Punch"}, traits, modifiers) do
+    {attack, attack_dice, dx, endurance} = Character.Attack.details(character, attack, traits, modifiers)
+    assert attack.name == "Punch"
+    assert attack_dice == 2
+    assert dx == 8
+    assert endurance == 0
+  end
+
+  defp check_attack(character, attack = %Character.Attack{name: "Icy Breath"}, traits, modifiers) do
+    {attack, attack_dice, dx, endurance} = Character.Attack.details(character, attack, traits, modifiers)
+    assert attack.name == "Icy Breath"
+    assert attack_dice == 2
+    assert dx == 8
+    assert endurance == 5
+  end
+
+  defp check_attack(character, attack = %Character.Attack{name: "Pound the Ground"}, traits, modifiers) do
+    {attack, attack_dice, dx, endurance} = Character.Attack.details(character, attack, traits, modifiers)
+    assert attack.name == "Pound the Ground"
+    assert attack_dice == 2
+    assert dx == 3
+    assert endurance == 0
   end
 
   defp abilities do
@@ -92,6 +136,16 @@ defmodule CharacterTest do
   defp weaknesses do
     json = File.read!("./assets/weaknesses.json")
     Poison.decode!(json, as: [%Trait.Ability{}])
+  end
+
+  defp perks do
+    json = File.read!("./assets/perks.json")
+    Poison.decode!(json, as: [%Trait.Perk{}])
+  end
+
+  defp flaws do
+    json = File.read!("./assets/flaws.json")
+    Poison.decode!(json, as: [%Trait.Perk{}])
   end
 
 end

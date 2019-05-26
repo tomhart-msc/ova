@@ -44,6 +44,10 @@ defmodule Character.Character do
     Enum.reduce(character.abilities, 40, fn ability, acc -> acc + Character.Ability.stat_effect(ability, :endurance, traits) end)
   end
 
+  def traits(character) do
+    Enum.concat(character.abilities, character.weaknesses)
+  end
+
   defimpl Poison.Decoder, for: Character.Character do
     def decode(data, options) do
       # Data is the JSON, parsed as a map. It may already have been decoded and

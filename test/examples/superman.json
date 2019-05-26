@@ -1,0 +1,65 @@
+{
+    "name": "Superman",
+    "abilities": [
+        {
+            "name": "Strong",
+            "value": 5
+        },
+        {
+            "name": "Attack",
+            "value": 1
+        }
+    ],
+    "weaknesses": [
+        {
+            "name": "Naive",
+            "value": 1
+        }
+    ],
+    "attacks": [
+        {
+            "name": "Heat Vision",
+            "perks": [
+                {
+                    "name": "Ranged"
+                }
+            ],
+            "flaws": [
+            ]
+        },
+        {
+            "name": "Punch",
+            "perks": [
+            ],
+            "flaws": [
+            ]
+        },
+        {
+            "name": "Icy Breath",
+            "perks": [
+                {
+                    "name": "Ranged, Strength-Powered"
+                }
+            ],
+            "flaws": [
+            ]
+        },
+        {
+            "name": "Pound the Ground",
+            "perks": [
+                {
+                    "name": "Ranged, Strength-Powered"
+                },
+                {
+                    "name": "Area Effect"
+                }
+            ],
+            "flaws": [
+                {
+                    "name": "Ineffective",
+                    "rank": 5
+                }
+            ]
+        }
+    ]
+}

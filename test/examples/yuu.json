@@ -61,14 +61,12 @@
             "perks": [
                 {
                     "name": "Affinity",
-                    "qualifier": "Nerdy",
-                    "cost": 0
+                    "qualifier": "Nerdy"
                 }
             ],
             "flaws": [
                 {
-                    "name": "Ineffective",
-                    "cost": 0
+                    "name": "Ineffective"
                 }
             ]
         }

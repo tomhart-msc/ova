@@ -119,23 +119,19 @@
             "perks": [
                 {
                     "name": "Area Effect",
-                    "cost": 10,
-                    "value": 2
+                    "rank": 2
                 },
                 {
-                    "name": "Stunning",
-                    "cost": 10
+                    "name": "Stunning"
                 },
                 {
                     "name": "Affinity",
-                    "qualifier": "Love",
-                    "cost": 0
+                    "qualifier": "Love"
                 }
             ],
             "flaws": [
                 {
-                    "name": "No Damage",
-                    "cost": 20
+                    "name": "No Damage"
                 }
             ]
         }

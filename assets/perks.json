@@ -1,0 +1,137 @@
+[
+    {
+        "name": "Accurate",
+        "cost": 5,
+        "effect": {
+            "type": "buff",
+            "stat": "Attack",
+            "target": "self"
+        }
+    },
+    {
+        "name": "Area Effect",
+        "cost": 10,
+        "effect": {
+            "type": "debuff",
+            "stat": "Defense",
+            "target": "enemy"
+        }
+    },
+    {
+        "name": "Armor Piercing",
+        "cost": 5,
+        "comment": "Debuffs opponent's Armored ability by 2 ranks. Don't know how to model that."
+    },
+    {
+        "name": "Barrier Buster",
+        "cost": 5,
+        "comment": "Stops barrier user from spending endurance if it gets through and gives them 'stunned'"
+    },
+    {
+        "name": "Blinding",
+        "cost": 20,
+        "comment": "Gives defender -3 to anything requiring vision for #{Attack ability rank} rounds"
+    },
+    {
+        "name": "Continued Effect",
+        "cost": 10,
+        "comment": "Target takes 1/2 damage in subsequent rounds, for a number of rounds equal to the ability this effects"
+    },
+    {
+        "name": "Defensive",
+        "cost": 5,
+        "comment": "Buffs your defense on the subsequent turn by one per rank"
+    },
+    {
+        "name": "Disarming",
+        "cost": 10,
+        "comment": "Inflict a weakness or flaw if do 1/4 of target's health, or automatically in lieu of damage"
+    },
+    {
+        "name": "Effective",
+        "cost": 5,
+        "effect": {
+            "type": "buff",
+            "stat": "DX",
+            "target": "self"
+        }
+    },
+    {
+        "name": "Fatiguing",
+        "cost": 0,
+        "comment": "Damages endurance instead of health, unless endurance is 0"
+    },
+    {
+        "name": "Impairing",
+        "cost": 10,
+        "comment": "Inflicts Impaired complication if do 1/4 of target's health, or automatically in lieu of damage"
+    },
+    {
+        "name": "Multiple Targets",
+        "cost": 10,
+        "comment": "Affect one more target per rank"
+    },
+    {
+        "name": "No Gesture",
+        "cost": 5
+    },
+    {
+        "name": "Overwhelming",
+        "cost": 15,
+        "comment": "Enemy forgoes either next action or defense roll"
+    },
+    {
+        "name": "Paralyzing",
+        "cost": 10,
+        "comment": "Inflicts Paralyzed complication if do 1/2 of target's health. If rank=2, 1/4 health or automatically in lieu of health"
+    },
+    {
+        "name": "Ranged",
+        "cost": 0,
+        "comment": "Negates Stong perk for this attack. Implement in code rather than DSL initially."
+    },
+    {
+        "name": "Ranged, Strength-Powered",
+        "cost": 5
+    },
+    {
+        "name": "Reach",
+        "cost": 5,
+        "comment": "Enemy chooses -1 to Attack or Defense versus you"
+    },
+    {
+        "name": "Redirectable",
+        "cost": 5,
+        "comment": "Requires Ranged perk. Allows you to try to hit again on a subsequent roll."
+    },
+    {
+        "name": "Strike Through",
+        "cost": 5,
+        "comment": "Lets you hit through walls, etc."
+    },
+    {
+        "name": "Stunning",
+        "cost": 10,
+        "comment": "Inflicts Stunned complication if do 1/4 of target's health, or automatically in lieu of damage"
+    },
+    {
+        "name": "Trap",
+        "cost": 5,
+        "comment": "Set up ahead of time with an activation. No action to activate. Enemy takes Surprised penalty."
+    },
+    {
+        "name": "Unique Perk",
+        "cost": 1,
+        "comment": "Not modeled; requires perk to be added here."
+    },
+    {
+        "name": "Vampire",
+        "cost": 5,
+        "comment": "Restores 1/4 of damage as health per rank."
+    },
+    {
+        "name": "Will Attack",
+        "cost": 0,
+        "comment": "Changes abilities and weaknesses used to defend. Not modeled."
+    }
+]

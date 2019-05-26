@@ -1,0 +1,124 @@
+[
+    {
+        "name": "Activation",
+        "cost": -10,
+        "comment": "Must spend a round activating it. Can still defend."
+    },
+    {
+        "name": "Ammunition",
+        "cost": -5
+    },
+    {
+        "name": "Assisted",
+        "cost": -15,
+        "comment": "One ally must spend an action helping you per rank."
+    },
+    {
+        "name": "Backlash",
+        "cost": -5,
+        "comment": "You take 1/4 of the damage you inflict per rank"
+    },
+    {
+        "name": "Break",
+        "cost": -10,
+        "comment": "Ability can only be used if health or endurance is 0"
+    },
+    {
+        "name": "Buildup",
+        "cost": -5,
+        "comment": "Need to wait 1 round per rank per use of the ability"
+    },
+    {
+        "name": "Cancel",
+        "cost": -5,
+        "comment": "Cost is variable, -0 to -20. Ability doesn't work on some class of targets."
+    },
+    {
+        "name": "Concentration",
+        "cost": -20,
+        "comment": "Need 1 round of doing NOTHING per rank per use. No actions or defense rolls."
+    },
+    {
+        "name": "Delayed",
+        "cost": -5,
+        "comment": "Ability does not take effect until before the start of your next turn"
+    },
+    {
+        "name": "Elaborate Gestures",
+        "cost": -5,
+        "comment": "Requires whole body to be free"
+    },
+    {
+        "name": "Feather Blow",
+        "cost": -5,
+        "comment": "Attack cannon inflict complications"
+    },
+    {
+        "name": "Finisher",
+        "cost": -10,
+        "comment": "Can only be used if enemy health = 0"
+    },
+    {
+        "name": "Inaccurate",
+        "cost": -5,
+        "effect": {
+            "type": "debuff",
+            "stat": "Attack",
+            "target": "self"
+        }
+    },
+    {
+        "name": "Ineffective",
+        "cost": -5,
+        "effect": {
+            "type": "debuff",
+            "stat": "DX",
+            "target": "self"
+        }
+    },
+    {
+        "name": "Low Penetration",
+        "cost": -5,
+        "comment": "Buffs enemy's armour ability; no effect if enemy is not armoured."
+    },
+    {
+        "name": "No Damage",
+        "cost": -20,
+        "comment": "Does no damage, but may inflict complications."
+    },
+    {
+        "name": "Open to Attack",
+        "cost": -25,
+        "comment": "Can't defend until next turn."
+    },
+    {
+        "name": "Recoil",
+        "cost": -10,
+        "comment": "Gives you Stunned complication."
+    },
+    {
+        "name": "Requirement",
+        "cost": -5,
+        "comment": "Something needs to be true for ability to work; -5 to -20 depending on severity."
+    },
+    {
+        "name": "Self-Only",
+        "cost": -5,
+        "comment": "Can only be used on yourself."
+    },
+    {
+        "name": "Unique Flaw",
+        "cost": -1,
+        "comment": "Not modeled; requires flaw to be added here."
+    },
+    {
+        "name": "Unwieldly",
+        "cost": -5,
+        "comment": "You take -1 to Defense per rank until next round, after you use this ability."
+    },
+    {
+        "name": "Weapon",
+        "cost": -5,
+        "comment": "Attack requires a weapon"
+    }
+]
