@@ -44,6 +44,20 @@ defmodule Character.Character do
     Enum.reduce(character.abilities, 40, fn ability, acc -> acc + Character.Ability.stat_effect(ability, :endurance, traits) end)
   end
 
+  def defense(character, traits) do
+    Enum.reduce(character.abilities, 2, fn ability, acc -> acc + Character.Ability.stat_effect(ability, :defense, traits) end)
+  end
+
+  def threat_value(character, traits, modifiers) do
+    def = defense(character, traits)
+    attacks = Enum.map(character.attacks, fn a -> Character.Attack.details(character, a, traits, modifiers) end)
+    max_attack = Enum.max(Enum.map(attacks, fn a -> elem(a, 1) end))
+    max_dx = Enum.max(Enum.map(attacks, fn a -> elem(a, 2) end))
+    health_buff = Enum.reduce(character.abilities, 0, fn ability, acc -> acc + Character.Ability.stat_effect(ability, :health, traits) end) / 10
+    endurance_buff = Enum.reduce(character.abilities, 0, fn ability, acc -> acc + Character.Ability.stat_effect(ability, :endurance, traits) end) / 10
+    trunc(def + max_attack + max_dx + health_buff + endurance_buff)
+  end
+
   def traits(character) do
     Enum.concat(character.abilities, character.weaknesses)
   end

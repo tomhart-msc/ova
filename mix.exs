@@ -14,7 +14,7 @@ defmodule OVA.MixProject do
   # Run "mix help compile.app" to learn about applications.
   def application do
     [
-      extra_applications: [:logger]
+      extra_applications: [:logger, :pdf_generator]
     ]
   end
 
@@ -24,7 +24,9 @@ defmodule OVA.MixProject do
       # {:dep_from_hexpm, "~> 0.3.0"},
       # {:dep_from_git, git: "https://github.com/elixir-lang/my_dep.git", tag: "0.1.0"},
       {:poison, "~> 4.0.1"},
-      {:credo, "~> 1.0.0", only: [:dev, :test], runtime: false}
+      {:credo, "~> 1.0.0", only: [:dev, :test], runtime: false},
+      { :pdf_generator, ">=0.5.3" },
+      {:sneeze, "~> 1.1"}
     ]
   end
 end

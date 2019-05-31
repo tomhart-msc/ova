@@ -28,3 +28,7 @@ use Mix.Config
 # here (which is why it is important to import them last).
 #
 #     import_config "#{Mix.env()}.exs"
+
+# Add :sasl to extra application and uncomment to debug application start issues
+#config :logger,
+#  handle_sasl_reports: true

@@ -12,6 +12,9 @@ defmodule Trait.Modifiers do
 
   # Given a list of modifiers, finds the modifier with the given name if one exists.
   def byName(modifiers, name) do
-    Enum.find(modifiers.list, fn t -> t.name == name end)
+    must(Enum.find(modifiers.list, fn t -> t.name == name end), name)
   end
+
+  defp must(nil, name), do: raise("No modifier found for #{name}")
+  defp must(mod, _), do: mod
 end

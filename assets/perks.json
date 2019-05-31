@@ -9,6 +9,10 @@
         }
     },
     {
+        "name": "Affinity",
+        "cost": 0
+    },
+    {
         "name": "Area Effect",
         "cost": 10,
         "effect": {

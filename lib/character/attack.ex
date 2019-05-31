@@ -20,6 +20,26 @@ defmodule Character.Attack do
     endurance_cost(attack, modifiers)}
   end
 
+  def description(attack = %Character.Attack{perks: [], flaws: []}, _) do
+    attack.name
+  end
+
+  def description(attack = %Character.Attack{}, modifiers = %Trait.Modifiers{}) do
+    attack_modifiers = Enum.concat(attack.perks, attack.flaws)
+    modifiers_with_costs = Enum.map(attack_modifiers, fn mod -> format_modifier(mod, modifiers) end)
+    details = Enum.join(modifiers_with_costs, ", ")
+    "#{attack.name} (#{details})"
+  end
+
+  defp format_modifier(modifier = %Character.Attack.Perk{}, modifiers = %Trait.Modifiers{}) do
+    modifier_details = Trait.Modifiers.byName(modifiers, modifier.name)
+    "#{modifier.name}#{format_cost(modifier.rank, modifier_details.cost)}"
+  end
+
+  defp format_cost(_, cost) when cost == 0, do: ""
+  defp format_cost(rank, cost) when cost > 0, do: " +#{rank * cost}"
+  defp format_cost(rank, cost) when cost < 0, do: " #{rank * cost}"
+
   def attack_dice(character, attack, traits, modifiers) do
     abilities = filter(attack, character |> Character.Character.traits)
     base = Enum.reduce(abilities, 2, fn ability, acc -> acc + Character.Ability.stat_effect(ability, :attack, traits) end)
